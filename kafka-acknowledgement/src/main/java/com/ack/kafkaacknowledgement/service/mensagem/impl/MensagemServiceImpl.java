@@ -4,13 +4,13 @@ import com.ack.kafkaacknowledgement.gateway.kafka.KafkaPost;
 import com.ack.kafkaacknowledgement.models.request.MensagemRequest;
 import com.ack.kafkaacknowledgement.models.response.MensagemResponse;
 import com.ack.kafkaacknowledgement.service.mensagem.MensagemService;
-import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MensagemServiceImpl implements MensagemService {
 
+    @Autowired
     private KafkaPost kafkaPost;
 
     public MensagemResponse postarMensagem(MensagemRequest mensagem) {
