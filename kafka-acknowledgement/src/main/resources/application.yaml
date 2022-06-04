@@ -1,0 +1,8 @@
+server:
+  port: 5000
+spring:
+  kafka:
+    bootstrap-servers:
+    ack: 0
+    retry: 0
+
