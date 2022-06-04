@@ -21,8 +21,14 @@ public class KafkaProducerConfig {
     @Value("${spring.kafka.ack}")
     private String acknowledgement;
 
-    @Value("${spring.kafka.retry}")
-    private String retry;
+    @Value("${spring.kafka.number-of-tries}")
+    private Integer numberOfTries;
+
+    @Value("${spring.kafka.imdepotence}")
+    private boolean imdepotence;
+
+    @Value("${spring.kafka.timeout}")
+    private Integer timeOut;
 
     @Bean
     public Map<String, Object> producerConfigs() {
@@ -31,7 +37,9 @@ public class KafkaProducerConfig {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.ACKS_CONFIG, acknowledgement);
-        props.put(ProducerConfig.RETRIES_CONFIG, retry);
+        props.put(ProducerConfig.RETRIES_CONFIG, numberOfTries);
+        props.put("metadata.fetch.timeout.ms", timeOut);
+        props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, imdepotence);
         return props;
     }
 

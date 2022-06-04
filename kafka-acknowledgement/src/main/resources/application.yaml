@@ -2,7 +2,9 @@ server:
   port: 5000
 spring:
   kafka:
-    bootstrap-servers:
+    bootstrap-servers: 127.0.0.1:9092
+    timeout: 0
     ack: 0
-    retry: 0
+    number-of-tries: 0
+    imdepotence: false
 
